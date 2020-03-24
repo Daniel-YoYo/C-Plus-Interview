@@ -10,11 +10,11 @@ class Error
 {
 
 public:
-    Error( const string& errorStrIn, const int& errorNumIn )
+    Error(const string &errorStrIn, const int &errorNumIn)
     {
         errorStr = errorStrIn;
         errorNum = errorNumIn;
-        cout << "Error : Destructor" << endl;
+        cout << "Error : Constructor" << endl;
     }
 
     ~Error()
@@ -40,9 +40,9 @@ class A
 {
 
 public:
-    A( void )
+    A(void)
     {
-        cout << "A : Constructor" << endl; 
+        cout << "A : Constructor" << endl;
     }
 
     ~A()
@@ -51,22 +51,22 @@ public:
     }
 };
 
-int func3( void )
+int func3(void)
 {
-    FILE * fp = fopen("none.txt", "r" );
-    if( fp == NULL )
+    FILE *fp = fopen("none.txt", "r");
+    if (fp == NULL)
     {
         // 抛出异常,当前栈区对象被正常析构
-        throw Error("Func3 Open File Failed!", 10 );
+        throw Error("Func3 Open File Failed!", 10);
         // 如果抛出异常,后面的代码都不执行
         cout << "C++ Exception Test!" << endl;
     }
 
-    fclose( fp );
+    fclose(fp);
     return 0;
 }
 
-int func2( void )
+int func2(void)
 {
     A a;
     func3();
@@ -76,7 +76,7 @@ int func2( void )
     return 0;
 }
 
-int func1( void )
+int func1(void)
 {
     A *a = new A;
     func2();
@@ -85,21 +85,21 @@ int func1( void )
     return 0;
 }
 
-int main( void )
+int main(void)
 {
     try
     {
         // 检测异常
         func1();
     }
-    
+
     // 捕获异常
-    catch( const Error& error )
+    catch (const Error &error)
     {
-            // 异常处理部分
+        // 异常处理部分
         cout << error.errorStr << error.errorNum << __FILE__ << __LINE__ << endl;
         return -1;
     }
-    
+
     return 0;
 }
