@@ -3,39 +3,40 @@
 #include <string.h>
 #include <stdio.h>
 
-void main21()
+void main()
 {
 	int		i = 0, j = 0;
 	int		num = 0;
 	char	*tmp = NULL;
-	//Êı×é Êı×éÖĞµÄÃ¿Ò»¸öÔªËØÊÇÖ¸Õë Ö¸ÕëÊı×é
+
 	char *myArray[] = {"aaaaaa", "ccccc", "bbbbbb", "111111"};
 
-	//´òÓ¡
-	num = sizeof(myArray)/sizeof(myArray[0]);
+	// æ•´ä¸ªæ•°ç»„å¤§å°,å­˜æ”¾4ä¸ªæŒ‡é’ˆ(32å­—èŠ‚)
+	num = sizeof(myArray);
+	// å•ä¸ªæ•°ç»„å…ƒç´ å¤§å°,æŒ‡é’ˆ(8å­—èŠ‚)
+	int len1= sizeof(myArray[0]);
+	printf("num:%d\tLen1:%d\n", num, len1 );
+	num = num/len1;
 
-	printf("ÅÅĞòÖ®Ç°\n");
 	for (i=0; i<num; i++)
 	{
 		//printf("%s \n", myArray[i]);
 		printf("%s \n", *(myArray+i) );
 	}
 
-	//ÅÅĞò
 	for (i=0; i<num; i++)
 	{
 		for (j=i; j<num; j++)
 		{
 			if (strcmp(myArray[i], myArray[j]) > 0 )
 			{
-				tmp = myArray[i];  //×¢Òâ  ½»»»µÄÊÇÊı×éÔªËØ ½»»»µÄÊÇÖ¸ÕëµÄÖµ
+				tmp = myArray[i];
 				myArray[i] = myArray[j];
 				myArray[j] = tmp;
 			}
 		}
 	}
 
-	printf("ÅÅĞòÖ®ºó\n");
 	for (i=0; i<num; i++)
 	{
 		//printf("%s \n", myArray[i]);
@@ -43,7 +44,6 @@ void main21()
 	}
 
 	printf("hello...\n");
-	system("pause");
 	return ;
 }
 
@@ -62,14 +62,14 @@ void sortMyArray11(char **myArray, int num)
 {
 	int i =0 , j = 0;
 	char *tmp = NULL;
-	//ÅÅĞò
+
 	for (i=0; i<num; i++)
 	{
 		for (j=i; j<num; j++)
 		{
 			if (strcmp(myArray[i], myArray[j]) > 0 )
 			{
-				tmp = myArray[i];  //×¢Òâ  ½»»»µÄÊÇÊı×éÔªËØ ½»»»µÄÊÇÖ¸ÕëµÄÖµ //¸Ä±äÖ¸ÕëµÄÖ¸Ïò
+				tmp = myArray[i];  //×¢ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½Öµ //ï¿½Ä±ï¿½Ö¸ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½
 				myArray[i] = myArray[j];
 				myArray[j] = tmp;
 			}
@@ -82,23 +82,18 @@ void main211()
 	int		i = 0, j = 0;
 	int		num = 0;
 	char	*tmp = NULL;
-	//Êı×é Êı×éÖĞµÄÃ¿Ò»¸öÔªËØÊÇÖ¸Õë Ö¸ÕëÊı×é
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ğµï¿½Ã¿Ò»ï¿½ï¿½Ôªï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	char *myArray[] = {"aaaaaa", "ccccc", "bbbbbb", "111111"};
 
-	//´òÓ¡
+	//ï¿½ï¿½Ó¡
 	num = sizeof(myArray)/sizeof(myArray[0]);
 
-	printf("ÅÅĞòÖ®Ç°\n");
 	printMyArray11(myArray, num);
-
 
 	sortMyArray11(myArray, num);
 
-
-	printf("ÅÅĞòÖ®ºó\n");
 	printMyArray11(myArray, num);
 
 	printf("hello...\n");
-	system("pause");
 	return ;
 }

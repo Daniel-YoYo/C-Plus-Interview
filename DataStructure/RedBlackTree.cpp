@@ -1,4 +1,4 @@
-#define BLACK 1
+ #define BLACK 1
 #define RED 0
 #include <iostream>
 

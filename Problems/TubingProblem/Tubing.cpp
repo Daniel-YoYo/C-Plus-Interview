@@ -1,4 +1,8 @@
 #include <iostream>
+#include <cstdio>
+#include <cstdlib>
+#include <math.h>
+
 using namespace std;
 
 // 油井y坐标指针
@@ -51,7 +55,7 @@ int main()
 	if (cin.fail() || n < 0)
 	{
 		cout << "输入n错误！" << endl;
-		system("pause");
+		getchar();
 		return 0;
 	}
 
@@ -61,7 +65,7 @@ int main()
 	cout << "请输入 " << n << " 个油井的 y 坐标（用空格隔开）" << endl;
 
 	// 输入油井的 y 坐标
-	for (auto i = 0; i < n; i++)
+	for (int i = 0; i < n; i++)
 	{
 		cin >> y[i];
 	}
@@ -70,7 +74,7 @@ int main()
 	if (cin.fail())
 	{
 		cout << "输入y坐标错误！" << endl;
-		system("pause");
+		getchar();
 		return 0;
 	}
 
@@ -81,9 +85,9 @@ int main()
 	mid = y[n / 2];
 
 	// 计算各个油井到主输油管的长度之和
-	for (auto i = 0; i < n; i++)
+	for (int i = 0; i < n; i++)
 	{
-		minDistance += abs(y[i] - mid);
+		minDistance += fabs(y[i] - mid);
 	}
 
 	// 显示输出
@@ -104,7 +108,9 @@ int main()
 	cout << "------------------------------------------------" << endl;
 
 	// 暂停查看结果
-	system("pause");
+	// system("pause");
+	getchar();
+
 
 	// 释放内存
 	delete[] y;

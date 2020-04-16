@@ -1,6 +1,3 @@
-// ÀÁººÊ½¶àÏß³ÌÎÊÌâ.cpp : ¶¨Òå¿ØÖÆÌ¨Ó¦ÓÃ³ÌĞòµÄÈë¿Úµã¡£
-//
-
 #include "stdafx.h"
 
 #include "windows.h"
@@ -8,25 +5,23 @@
 #include <process.h>
 #include "iostream"
 
-
 #include <iostream>
 using namespace std;
 
-// ¹¹Ôìº¯Êı²»ÊÇÏß³Ì°²È«º¯Êı
 class Singelton
 {
 private:
 	Singelton()
 	{
-		cout<<"Singelton¹¹Ôìº¯Êıbegin"<<endl;
+		cout<<"Singeltonï¿½ï¿½ï¿½ìº¯ï¿½ï¿½begin"<<endl;
 		Sleep(1000);
-		cout<<"Singelton¹¹Ôìº¯Êıend"<<endl;
+		cout<<"Singeltonï¿½ï¿½ï¿½ìº¯ï¿½ï¿½end"<<endl;
 	}
 
 public:
 	static Singelton *getSingelton()
 	{
-		if (single == NULL) //ĞèÒªÅĞ¶Ï
+		if (single == NULL) //ï¿½ï¿½Òªï¿½Ğ¶ï¿½
 		{
 			count ++; 
 			single = new Singelton();
@@ -36,14 +31,14 @@ public:
 
 	static Singelton *releaseSingelton()
 	{
-		if (single != NULL) //ĞèÒªÅĞ¶Ï
+		if (single != NULL) //ï¿½ï¿½Òªï¿½Ğ¶ï¿½
 		{
 			delete single;
 			single = NULL;
 		}
 		return single;
 	}
-	static void pirntS() //²âÊÔº¯Êı
+	static void pirntS() //ï¿½ï¿½ï¿½Ôºï¿½ï¿½ï¿½
 	{
 		cout<<"Singelton printS test"<<endl;
 	}
@@ -53,7 +48,7 @@ private:
 	static int count ;
 };
 
-//note ¾²Ì¬±äÁ¿ÀàÍâ³õÊ¼»¯  //ÀÁººÊ½
+//note ï¿½ï¿½Ì¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½  //ï¿½ï¿½ï¿½ï¿½Ê½
 Singelton *Singelton::single = NULL;
 int Singelton::count = 0;
 
@@ -75,8 +70,8 @@ void main11()
 
 void MyThreadFunc (void *)
 {
-	//cout << "ÎÒÊÇÏß³ÌÌå ...." << endl;
-	cout << "ÎÒÊÇÏß³ÌÌå ....\n";
+	//cout << "ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½ï¿½ï¿½ ...." << endl;
+	cout << "ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½ï¿½ï¿½ ....\n";
 	Singelton::getSingelton()->pirntS();
 }
 int _tmain(int argc, _TCHAR* argv[])

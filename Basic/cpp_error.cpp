@@ -57,7 +57,7 @@ int func3(void)
     if (fp == NULL)
     {
         // 抛出异常,当前栈区对象被正常析构
-        throw Error("Func3 Open File Failed!", 10);
+        throw Error("Func3 Open File Failed!", __LINE__ );
         // 如果抛出异常,后面的代码都不执行
         cout << "C++ Exception Test!" << endl;
     }
@@ -97,7 +97,7 @@ int main(void)
     catch (const Error &error)
     {
         // 异常处理部分
-        cout << error.errorStr << error.errorNum << __FILE__ << __LINE__ << endl;
+        cout << __FILE__ << ". Line:" << error.errorNum << " : " << error.errorStr << endl;
         return -1;
     }
 

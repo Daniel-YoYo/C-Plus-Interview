@@ -2,14 +2,12 @@
 #include <iostream>
 using namespace std;
 
-
-//¿¡∫∫ Ω
 class Singelton
 {
 private:
 	Singelton()
 	{
-		cout << "Singelton ππ‘Ï∫Ø ˝÷¥––" << endl;
+		cout << "Singelton ÔøΩÔøΩÔøΩÏ∫ØÔøΩÔøΩ÷¥ÔøΩÔøΩ" << endl;
 	}
 public:
 	static Singelton *getInstance()
@@ -31,7 +29,7 @@ private:
 };
 
 //int g_count = 0;
-//∂ˆ∫∫ Ω
+//ÔøΩÔøΩÔøΩÔøΩ Ω
 Singelton *Singelton::m_psl = new Singelton;
 
 
@@ -43,11 +41,11 @@ void main041()
 
 	if (p1 == p2)
 	{
-		cout << " «Õ¨“ª∏ˆ∂‘œÛ" << endl;
+		cout << "ÔøΩÔøΩÕ¨“ªÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ" << endl;
 	}
 	else
 	{
-		cout << "≤ª «Õ¨“ª∏ˆ∂‘œÛ" << endl;
+		cout << "ÔøΩÔøΩÔøΩÔøΩÕ¨“ªÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ" << endl;
 	}
 	Singelton::FreeInstance();
 
