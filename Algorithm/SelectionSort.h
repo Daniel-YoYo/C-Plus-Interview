@@ -1,4 +1,12 @@
 /*
+ * @Author: your name
+ * @Date: 2020-02-15 17:28:08
+ * @LastEditTime: 2020-07-19 13:46:38
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /C++/Algorithm/SelectionSort.h
+ */ 
+/*
 
 （有序区，无序区）。在无序区里找一个最小的元素跟在有序区的后面。对数组：比较得多，换得少。
 
@@ -8,6 +16,43 @@
 3. 以此类推，直到所有元素均排序完毕
 
 */
+
+#include <vector>
+#include <assert.h>
+
+using namespace std;
+
+void selectionSort_Base( int* arr, int len )
+{
+	assert( arr );
+	assert( len );
+
+	int minIndex, cycles = 0, swapCount = 0;
+
+	for (int i = 0; i < len - 1; i++)
+	{
+		minIndex = i;
+
+		for (int j = i + 1; j < len; j++ )
+		{	
+			// 通过进行比较,记录最小值下标
+			if ( arr[j] < arr[ minIndex ] )
+			{
+				minIndex = j;
+			}
+			++cycles;
+		}
+		
+		if ( i != minIndex)
+		{
+			swap( arr[i], arr[ minIndex ] );
+			++swapCount;
+		}
+	}
+	
+	cout << "Cycles : " << cycles << endl;
+	cout << "SwapCount : " << swapCount << endl;	
+}
 
 // 选择排序
 void SelectionSort(vector<int>& v) {

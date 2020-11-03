@@ -21,6 +21,8 @@
  
 // 服务器端口号
 #define SERVER_PORT 8888
+
+#define LISTEN_BACKLOG_MAX 10
  
 // int epoll_create(int size)中的size
 // 为epoll支持的最大句柄数

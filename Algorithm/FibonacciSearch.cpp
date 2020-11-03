@@ -1,8 +1,16 @@
+/*
+ * @Author: your name
+ * @Date: 2020-02-15 17:28:08
+ * @LastEditTime: 2020-07-20 19:04:00
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /C++/Algorithm/FibonacciSearch.cpp
+ */ 
 // 斐波那契查找
-
-#include "stdafx.h"
 #include <memory>
-#include  <iostream>
+#include <iostream>
+#include <string.h>
+
 using namespace std;
 
 const int max_size=20;//斐波那契数组的长度
@@ -64,8 +72,8 @@ int FibonacciSearch(int *a, int n, int key)  //a为要查找的数组,n为要查
 int main()
 {
     int a[] = {0,16,24,35,47,59,62,73,88,99};
-    int key=100;
+    int key=16;
     int index=FibonacciSearch(a,sizeof(a)/sizeof(int),key);
-    cout<<key<<" is located at:"<<index;
+    cout<<key<<" is located at:"<<index << endl;
     return 0;
 }

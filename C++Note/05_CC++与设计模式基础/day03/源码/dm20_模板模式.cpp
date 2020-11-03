@@ -1,4 +1,11 @@
-
+/*
+ * @Author: your name
+ * @Date: 2020-03-25 15:52:50
+ * @LastEditTime: 2020-09-21 13:20:20
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: /C++/C++Note/05_CC++ä¸è®¾è®¡æ¨¡å¼åŸºç¡€/day03/æºç /dm20_æ¨¡æ¿æ¨¡å¼.cpp
+ */
 #include <iostream>
 using namespace std;
 
@@ -11,7 +18,7 @@ public:
 	virtual void MakeTail() = 0;
 
 public:
-	void Make() //Ä£°åº¯Êı °ÑÒµÎñÂß¼­¸ø×öºÃ
+	void Make() //Ä£ï¿½åº¯ï¿½ï¿½ ï¿½ï¿½Òµï¿½ï¿½ï¿½ß¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	{
 		MakeTail();
 		MakeBody();

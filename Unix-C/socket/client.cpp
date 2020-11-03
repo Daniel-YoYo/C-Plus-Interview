@@ -11,7 +11,9 @@ Client::Client(){
     // 初始化要连接的服务器地址和端口
     serverAddr.sin_family = PF_INET;
     serverAddr.sin_port = htons(SERVER_PORT);
-    serverAddr.sin_addr.s_addr = inet_addr(SERVER_IP);
+    // serverAddr.sin_addr.s_addr = inet_addr(SERVER_IP);
+    // 与上等价
+    inet_pton( AF_INET, SERVER_IP, &serverAddr.sin_addr )
     
     // 初始化socket
     sock = 0;
@@ -66,11 +68,14 @@ void Client::Connect() {
 // 断开连接，清理并关闭文件描述符
 void Client::Close() {
  
-    if(pid){
+    if(pid)
+    {
        //关闭父进程的管道和sock
         close(pipe_fd[0]);
         close(sock);
-    }else{
+    }
+    else
+    {
         //关闭子进程的管道
         close(pipe_fd[1]);
     }
@@ -89,11 +94,14 @@ void Client::Start() {
     pid = fork();
     
     // 如果创建子进程失败则退出
-    if(pid < 0) {
+    if(pid < 0) 
+    {
         perror("fork error");
         close(sock);
         exit(-1);
-    } else if(pid == 0) {
+    }
+    else if(pid == 0)
+    {
         // 进入子进程执行流程
         //子进程负责写入管道，因此先关闭读端
         close(pipe_fd[0]); 
@@ -102,33 +110,41 @@ void Client::Start() {
         cout << "Please input 'exit' to exit the chat room" << endl;
         cout<<"\\ + ClientID to private chat "<<endl;
         // 如果客户端运行正常则不断读取输入发送给服务端
-        while(isClientwork){
+        while( isClientwork )
+        {
             //清空结构体
             memset(msg.content,0,sizeof(msg.content));
             fgets(msg.content, BUF_SIZE, stdin);
+
             // 客户输出exit,退出
-            if(strncasecmp(msg.content, EXIT, strlen(EXIT)) == 0){
+            if(strncasecmp(msg.content, EXIT, strlen(EXIT)) == 0)
+            {
                 isClientwork = 0;
             }
             // 子进程将信息写入管道
-            else {
+            else 
+            {
                 //清空发送缓存
                 memset(send_buf,0,BUF_SIZE);
                 //结构体转换为字符串
                 memcpy(send_buf,&msg,sizeof(msg));
-                if( write(pipe_fd[1], send_buf, sizeof(send_buf)) < 0 ) { 
+                if( write(pipe_fd[1], send_buf, sizeof(send_buf)) < 0 ) 
+                { 
                     perror("fork error");
                     exit(-1);
                 }
             }
         }
-    } else { 
+    } 
+    else 
+    { 
         //pid > 0 父进程
         //父进程负责读管道数据，因此先关闭写端
         close(pipe_fd[1]); 
  
         // 主循环(epoll_wait)
-        while(isClientwork) {
+        while(isClientwork) 
+        {
             int epoll_events_count = epoll_wait( epfd, events, 2, -1 );
  
             //处理就绪事件
